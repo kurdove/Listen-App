@@ -12,7 +12,8 @@ class Album extends Component{
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      isMouseInside: false
     };
 
     this.audioElement=document.createElement('audio');
@@ -44,6 +45,15 @@ handleSongClick(song){
   }
 }
 
+handleMouseEnter(){
+  console.log('mouse enter');
+  this.setState({isMouseInside: true});
+}
+
+handleMouseLeave(){
+  console.log('mouse leave');
+  this.setState({isMouseInside: false});
+}
   render(){
     return (
       <section className="album">
@@ -63,8 +73,15 @@ handleSongClick(song){
           </colgroup>
           <tbody>
                 {this.state.album.songs.map( (song, index) =>
-                  <tr className="song" key={index} onClick={() => this.handleSongClick(song)}>
-                    <td>{index + 1}  {song.title}  {song.duration}</td>
+                  <tr className="song" key={index}
+                  onClick={() => this.handleSongClick(song)}
+                  onMouseEnter={()=>this.handleMouseEnter()}
+                  onMouseLeave={()=>this.handleMouseLeave()}>
+                    <td> {!this.state.isMouseInside ? index+1 : null}
+                    {this.state.isMouseInside && !this.state.isPlaying ? <button><span className="icon ion-md-play"></span></button> : null}
+                    {this.state.isMouseInside && this.state.isPlaying ? <button><span className="icon ion-md-pause"></span></button> : null}
+                    {song.title}
+                    {song.duration}</td>
                   </tr>
                   )
                 }
