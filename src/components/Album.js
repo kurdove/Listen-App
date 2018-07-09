@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 class Album extends Component{
   constructor(props){
@@ -13,7 +14,8 @@ class Album extends Component{
       album: album,
       currentSong: album.songs[0],
       isPlaying: false,
-      isMouseInside: false
+      isMouseInside: false,
+      // currentMouseOverSong: false
     };
 
     this.audioElement=document.createElement('audio');
@@ -45,9 +47,14 @@ handleSongClick(song){
   }
 }
 
+handlePrevClick() {
+}
+
 handleMouseEnter(){
   console.log('mouse enter');
   this.setState({isMouseInside: true});
+  this.setState({isPlaying: false});
+  // this.setState({currentMouseOverSong: song});
 }
 
 handleMouseLeave(){
@@ -88,6 +95,11 @@ handleMouseLeave(){
 
           </tbody>
         </table>
+        <PlayerBar
+          isPlaying={this.state.isPlaying}
+          currentSong={this.state.currentSong}
+          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+          />
       </section>
     );
   }
