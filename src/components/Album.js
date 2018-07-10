@@ -47,11 +47,6 @@ handleSongClick(song){
   }
 }
 
-<<<<<<< HEAD
-handleMouseEnter(song){
-  // console.log('mouse enter');
-  this.setState({currentMouseOverSong: song, isMouseInside: true});
-=======
 handlePrevClick() {
   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
   const newIndex = Math.max(0, currentIndex - 1);
@@ -60,11 +55,15 @@ handlePrevClick() {
   this.play();
 }
 
+// handleMouseEnter(song){
+//   // console.log('mouse enter');
+//   this.setState({currentMouseOverSong: song, isMouseInside: true});
+// }
+
 handleMouseEnter(song){
   // console.log('mouse enter');
   this.setState({isMouseInside: true, currentMouseOverSong: song});
   this.setState({isPlaying: false});
->>>>>>> checkpoint-08-jams_playbar
 }
 
 handleMouseLeave(){
@@ -94,19 +93,11 @@ handleMouseLeave(){
                   onClick={() => this.handleSongClick(song)}
                   onMouseEnter={()=>this.handleMouseEnter(song)}
                   onMouseLeave={()=>this.handleMouseLeave()}>
-<<<<<<< HEAD
                     <td> {!this.state.isMouseInside ? index+1 : null}
                     {this.state.isMouseInside && !this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-play"></span></button> : null}
                     {this.state.isMouseInside && this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-pause"></span></button> : null}
                     {song.title}
                     {song.duration}</td>
-=======
-                  <td> {!this.state.isMouseInside ? index+1 : null}
-                  {this.state.isMouseInside && !this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-play"></span></button> : null}
-                  {this.state.isMouseInside && this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-pause"></span></button> : null}
-                  {song.title}
-                  {song.duration}</td>
->>>>>>> checkpoint-08-jams_playbar
                   </tr>
                   )
                 }
