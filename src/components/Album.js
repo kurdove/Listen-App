@@ -48,7 +48,8 @@ handleSongClick(song){
 
 handleMouseEnter(song){
   // console.log('mouse enter');
-  this.setState({currentMouseOverSong: song, isMouseInside: true});
+  this.setState({isMouseInside: true, currentMouseOverSong: song});
+  this.setState({isPlaying: false});
 }
 
 handleMouseLeave(){
