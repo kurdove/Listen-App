@@ -15,7 +15,7 @@ class Album extends Component{
       currentSong: album.songs[0],
       isPlaying: false,
       isMouseInside: false,
-      // currentMouseOverSong: false
+      currentMouseOverSong: null
     };
 
     this.audioElement=document.createElement('audio');
@@ -55,15 +55,14 @@ handlePrevClick() {
   this.play();
 }
 
-handleMouseEnter(){
-  console.log('mouse enter');
-  this.setState({isMouseInside: true});
+handleMouseEnter(song){
+  // console.log('mouse enter');
+  this.setState({isMouseInside: true, currentMouseOverSong: song});
   this.setState({isPlaying: false});
-  // this.setState({currentMouseOverSong: song});
 }
 
 handleMouseLeave(){
-  console.log('mouse leave');
+  // console.log('mouse leave');
   this.setState({isMouseInside: false});
 }
   render(){
@@ -87,13 +86,13 @@ handleMouseLeave(){
                 {this.state.album.songs.map( (song, index) =>
                   <tr className="song" key={index}
                   onClick={() => this.handleSongClick(song)}
-                  onMouseEnter={()=>this.handleMouseEnter()}
+                  onMouseEnter={()=>this.handleMouseEnter(song)}
                   onMouseLeave={()=>this.handleMouseLeave()}>
-                    <td> {!this.state.isMouseInside ? index+1 : null}
-                    {this.state.isMouseInside && !this.state.isPlaying ? <button><span className="icon ion-md-play"></span></button> : null}
-                    {this.state.isMouseInside && this.state.isPlaying ? <button><span className="icon ion-md-pause"></span></button> : null}
-                    {song.title}
-                    {song.duration}</td>
+                  <td> {!this.state.isMouseInside ? index+1 : null}
+                  {this.state.isMouseInside && !this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-play"></span></button> : null}
+                  {this.state.isMouseInside && this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-pause"></span></button> : null}
+                  {song.title}
+                  {song.duration}</td>
                   </tr>
                   )
                 }
