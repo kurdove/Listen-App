@@ -17,7 +17,8 @@ class Album extends Component{
       duration: album.songs[0].duration,
       isPlaying: false,
       isMouseInside: false,
-      currentMouseOverSong: null
+      currentMouseOverSong: null,
+      volume: 0.5
     };
 
     this.audioElement=document.createElement('audio');
@@ -103,11 +104,16 @@ handleMouseLeave(){
 
 formatTime(seconds){
   if (isNaN(seconds)){return "-:--";}
-
   const roundSeconds = Math.floor(seconds);
   const numMinutes = Math.floor(roundSeconds / 60);
   const remSeconds = roundSeconds % 60;
   return numMinutes + ":" + remSeconds;
+}
+
+handleVolumeChange(e){
+  const newVolume=e.target.value;
+  this.audioElement.volume=newVolume;
+  this.setState({volume: newVolume});
 }
 
   render(){
@@ -154,7 +160,8 @@ formatTime(seconds){
           handleNextClick={()=>this.handleNextClick()}
           handleTimeChange={(e)=>this.handleTimeChange(e)}
           formatTime={(e)=>this.formatTime(e)}
-          />
+          handleVolumeChange={(e)=>this.handleVolumeChange(e)}
+        />
       </section>
     );
   }
