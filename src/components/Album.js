@@ -100,6 +100,14 @@ handleMouseLeave(){
   // console.log('mouse leave');
   this.setState({isMouseInside: false});
 }
+
+// formatTime(t){
+//   const seconds = this.audioElement.duration;
+//   const numMinutes = Math.floor(((seconds % 86400) % 3600) / 60);
+//   const numSeconds = ((seconds % 86400) % 3600) % 60;
+//   return numMinutes + ":" + numSeconds;
+// }
+
   render(){
     return (
       <section className="album">
@@ -137,7 +145,7 @@ handleMouseLeave(){
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
+          currentTime={this.audioElement.duration}
           duration={this.audioElement.duration}
           handleSongClick={()=>this.handleSongClick(this.state.currentSong)}
           handlePrevClick={()=>this.handlePrevClick()}
