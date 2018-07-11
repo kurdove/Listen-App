@@ -101,12 +101,14 @@ handleMouseLeave(){
   this.setState({isMouseInside: false});
 }
 
-// formatTime(t){
-//   const seconds = this.audioElement.duration;
-//   const numMinutes = Math.floor(((seconds % 86400) % 3600) / 60);
-//   const numSeconds = ((seconds % 86400) % 3600) % 60;
-//   return numMinutes + ":" + numSeconds;
-// }
+formatTime(seconds){
+  if (isNaN(seconds)){return "-:--";}
+
+  const roundSeconds = Math.floor(seconds);
+  const numMinutes = Math.floor(roundSeconds / 60);
+  const remSeconds = roundSeconds % 60;
+  return numMinutes + ":" + remSeconds;
+}
 
   render(){
     return (
@@ -135,7 +137,7 @@ handleMouseLeave(){
                     {this.state.isMouseInside && !this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-play"></span></button> : null}
                     {this.state.isMouseInside && this.state.isPlaying && this.state.currentMouseOverSong === song ? <button><span className="icon ion-md-pause"></span></button> : null}
                     {song.title}
-                    {song.duration}</td>
+                    {this.formatTime(song.duration)}</td>
                   </tr>
                   )
                 }
@@ -145,12 +147,13 @@ handleMouseLeave(){
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.audioElement.duration}
+          currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
           handleSongClick={()=>this.handleSongClick(this.state.currentSong)}
           handlePrevClick={()=>this.handlePrevClick()}
           handleNextClick={()=>this.handleNextClick()}
           handleTimeChange={(e)=>this.handleTimeChange(e)}
+          formatTime={(e)=>this.formatTime(e)}
           />
       </section>
     );
