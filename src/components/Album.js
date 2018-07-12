@@ -107,7 +107,11 @@ formatTime(seconds){
   const roundSeconds = Math.floor(seconds);
   const numMinutes = Math.floor(roundSeconds / 60);
   const remSeconds = roundSeconds % 60;
-  return numMinutes + ":" + remSeconds;
+  if (remSeconds<10){
+    return numMinutes + ":" + '0' + remSeconds;}
+  else {
+    return numMinutes + ":" + remSeconds;
+  }
 }
 
 handleVolumeChange(e){
