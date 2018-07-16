@@ -1,0 +1,24 @@
+.library-album-info {
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(65, 153, 153);
+}
+
+a:hover.library-album-info {
+  text-decoration: none;
+  color: #bfbfbf;
+
+}
+
+.img-responsive {
+  margin: 0 auto;
+}
+
+.library-album-artist {
+  font-size: 1.25rem;
+  padding-top: .5rem;
+}
+
+.image {
+padding: 1rem;
+}

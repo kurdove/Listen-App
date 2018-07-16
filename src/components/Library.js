@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import albumData from './../data/albums';
+import { Row, Col, Image } from 'react-bootstrap';
+import '.././styles/Library.css';
 
 class Library extends Component {
   constructor(props) {
@@ -10,18 +12,20 @@ class Library extends Component {
 
   render(){
     return (
-      <section className="library">
+      <Row className="library show-grid">
         {
           this.state.albums.map( (album, index) =>
-            <Link to={`/album/${album.slug}`} key={index}>
-              <img src={album.albumCover} alt={album.title}/>
-              <div>{album.title}</div>
-              <div>{album.artist}</div>
-              <div>{album.songs.length}songs</div>
-            </Link>
+            <Col xs={12} sm={12} md={6} lg={3} key={index} className="library-album-section">
+              <Link to={`/album/${album.slug}`} key={index} className="library-album-info">
+                <Image src={album.albumCover} alt={album.title} responsive className="image"/>
+                <div>{album.title}</div>
+                <div className="library-album-artist">{album.artist}</div>
+                <div>{album.songs.length}songs</div>
+              </Link>
+            </Col>
           )
         }
-      </section>
+      </Row>
     );
   }
 }
