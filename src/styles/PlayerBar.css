@@ -1,0 +1,38 @@
+.navbar-default {
+  background: white;
+  border-top: .15rem solid rgb(101, 95, 95);
+  height: 12rem;
+  padding: 1rem;
+}
+
+.seek-bar {
+  appearance: none;
+  width: 65%;
+  height: .4rem;
+  background: grey;
+  margin: .25rem 0;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  width: .75rem;
+  height: .75rem;
+  background: black;
+}
+
+#volume-control {
+  margin-top: 1rem;
+}
+
+#previous,#next,#play-pause {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  border-radius: .5rem;
+}
+
+#play-pause{
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}

@@ -1,22 +1,37 @@
 .App {
   text-align: center;
+  padding: 5rem;
+  margin: 2rem;
+  background-color: #303030;
 }
 
+.Link {
+  color: #ac5c5;
+  font-size: 2rem;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+a:hover.Link{
+  color: #bfbfbf;
+}
+
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+} */
 
-.App-header {
-  background-color: #222;
+/* .App-header {
+  background-color: white;
   height: 150px;
   padding: 20px;
   color: white;
-}
+} */
 
-.App-title {
+/* .App-title {
   font-size: 1.5em;
-}
+} */
 
 .App-intro {
   font-size: large;
