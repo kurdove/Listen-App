@@ -1,8 +1,36 @@
-.album-info {
-  padding-bottom: 14rem;
+.image {
+/* padding: 0.5rem; */
+width: 90%;
+padding-top: 2.5rem;
+align-content: center;
 }
 
-#song-action-btns {
-  border: none;
-  background: none;
+.album-details {
+  color: rgb(65, 153, 153);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+#song-list {
+  color: rgb(65, 153, 153);
+}
+
+.table-content {
+    margin-top: 2.5rem;
+    color: white;
+}
+
+.table-responsive {
+  font-size: 1rem;
+
+}
+
+.table-data {
+  margin: 0;
+  padding: 0;
+}
+
+.player-bar {
+  color: gray;
+  padding-top: 2rem;
 }
